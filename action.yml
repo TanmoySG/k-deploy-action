@@ -1,0 +1,15 @@
+name: 'Deploy to Kubernetes'
+description: 'A GitHub Action to Deploy Apps to any Kubernetes Environment'
+inputs:
+  kubeconfig:  # id of input
+    description: 'Path to Kubeconfig'
+    required: true
+  certificate:  # id of input
+    description: 'Path to certificates'
+    required: true
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'node16'
+  main: 'index.js'
