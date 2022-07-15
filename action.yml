@@ -1,15 +1,19 @@
 name: 'Deploy to Kubernetes'
 description: 'A GitHub Action to Deploy Apps to any Kubernetes Environment'
+author: 'Tanmoy Sen Gupta'
 inputs:
-  kubeconfig:  # id of input
+  kubeconfig:
     description: 'Path to Kubeconfig'
     required: true
-  certificate:  # id of input
+  certificate: 
     description: 'Path to certificates'
     required: true
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  deploymentFiles:
+    description: 'Path to Deployment Files'
+    required: true
+# outputs:
+#   time: # id of output
+#     description: 'The time we greeted you'
 runs:
   using: 'node16'
   main: 'index.js'
