@@ -5,15 +5,15 @@ import * as fs from 'fs';
 async function run() {
   try {
     const kubeconfigPath = core.getInput('kubeconfig');
-    const kubeDeployments = core.getInput('deployments');
+    const kubeResourcesPath = core.getInput('resources');
 
     const kubeconfig = new KubeConfig();
     kubeconfig.loadFromFile(kubeconfigPath)
 
     const client = await new K8sClient(kubeconfig).init();
 
-    const deploymentYAMLString = fs.readFileSync(kubeDeployments, 'utf8');
-    const deploymentResponse = await client.create(deploymentYAMLString);
+    const kubeResourcesYAML = fs.readFileSync(kubeResourcesPath, 'utf8');
+    const deploymentResponse = await client.create(kubeResourcesYAML);
 
     const deploymentResponseString = stringify(deploymentResponse);
     console.log(deploymentResponseString);
