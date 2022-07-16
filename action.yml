@@ -1,6 +1,6 @@
 name: 'Deploy to Kubernetes'
 description: 'A GitHub Action to Deploy Apps to any Kubernetes Environment'
-author: 'Tanmoy Sen Gupta'
+author: Tanmoy Sen Gupta <tanmoysps@gmail.com>
 inputs:
   kubeconfig:
     description: 'Path to Kubeconfig'
@@ -11,3 +11,6 @@ inputs:
 runs:
   using: 'node16'
   main: 'dist/index.js'
+branding:
+  icon: upload-cloud
+  color: purple
