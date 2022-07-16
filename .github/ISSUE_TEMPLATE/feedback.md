@@ -2,7 +2,7 @@
 name: Feedback
 about: Feedback for K-deploy
 title: "[Feedback]"
-label: feedback
+label: 'feedback'
 assignees: ''
 
 ---
