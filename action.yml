@@ -5,10 +5,7 @@ inputs:
   kubeconfig:
     description: 'Path to Kubeconfig'
     required: true
-  certificate: 
-    description: 'Path to certificates'
-    required: false
-  deploymentFiles:
+  deployments:
     description: 'Path to Deployment Files'
     required: true
 runs:
