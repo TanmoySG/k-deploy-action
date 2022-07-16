@@ -15,4 +15,4 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            :bow: Thank You for your feedback ${{github.actor}}
+            :bow: Thank You for your feedback @${{github.actor}}
