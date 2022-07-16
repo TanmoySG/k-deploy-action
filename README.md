@@ -7,8 +7,8 @@
 The action can be used as
 
 ```yaml
-- name: Deploy to K8s
-  uses: tanmoysg/k-deploy-action@latest
+- name: Kubernetes Deployment
+  uses: TanmoySG/k-deploy-action@v0.1-alpha
   with:
     kubeconfig: path/to/kubeconfig
     resources: path/to/resources/file
@@ -41,8 +41,8 @@ To tackle this, one may use one of the following ways to secure the things.
     echo ${{ secrets.KUBECONFIG }} > path/to/deploy.kubeconfig
     echo ${{ secrets.CERTS }} > path/to/cert
 
-- name: Deploy to K8s
-  uses: tanmoysg/k-deploy-action@latest
+- name: Kubernetes Deployment
+  uses: TanmoySG/k-deploy-action@v0.1-alpha
   with:
     kubeconfig: path/to/deploy.kubeconfig
     resources: path/to/resources/file
@@ -61,8 +61,8 @@ To tackle this, one may use one of the following ways to secure the things.
     ./decrypt kubeconfig.encrypted -k ${{ secret.DECRYPTION_KEY}} > path/to/deploy.kubeconfig
     ./decrypt certs.encrypted -k ${{ secret.DECRYPTION_KEY}} > path/to/cert
 
-- name: Deploy to K8s
-  uses: tanmoysg/k-deploy-action@latest
+- name: Kubernetes Deployment
+  uses: TanmoySG/k-deploy-action@v0.1-alpha
   with:
     kubeconfig: path/to/deploy.kubeconfig
     resources: path/to/resources/file
