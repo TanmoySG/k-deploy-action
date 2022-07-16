@@ -1,4 +1,4 @@
-name: 'Deploy to Kubernetes'
+name: 'Kubernetes Deployment'
 description: 'A GitHub Action to Deploy Apps to any Kubernetes Environment'
 author: Tanmoy Sen Gupta <tanmoysps@gmail.com>
 inputs:
