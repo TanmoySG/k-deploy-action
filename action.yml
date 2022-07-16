@@ -10,10 +10,7 @@ inputs:
     required: false
   deploymentFiles:
     description: 'Path to Deployment Files'
-    required: false
-# outputs:
-#   time: # id of output
-#     description: 'The time we greeted you'
+    required: true
 runs:
   using: 'node16'
   main: 'dist/index.js'
