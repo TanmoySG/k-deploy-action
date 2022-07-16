@@ -5,8 +5,8 @@ inputs:
   kubeconfig:
     description: 'Path to Kubeconfig'
     required: true
-  deployments:
-    description: 'Path to Deployment Files'
+  resources:
+    description: 'Path to resources Files'
     required: true
 runs:
   using: 'node16'
