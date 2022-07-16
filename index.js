@@ -13,7 +13,7 @@ async function run() {
     const client = await new K8sClient(kubeconfig).init();
 
     const kubeResourcesYAML = fs.readFileSync(kubeResourcesPath, 'utf8');
-    const deploymentResponse = await client.create(kubeResourcesYAML);
+    const deploymentResponse = await client.apply(kubeResourcesYAML);
 
     const deploymentResponseString = stringify(deploymentResponse);
     console.log(deploymentResponseString);
