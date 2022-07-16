@@ -1,9 +1,6 @@
 name: K-Deploy Action Example
 
-on:
-  push:
-    tags:
-      - "v*.*.*"
+on: workflow_dispatch
 
 jobs:
   aks-deploy:
@@ -13,9 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Hello world action step
+      - name: K-Deploy Action
         uses: ./
-        id: hello
         with:
           kubeconfig: aks.kubeconfig
-          deployments: example/deployment.yml
+          resources: example/deployment.yml
