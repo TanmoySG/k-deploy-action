@@ -1,6 +1,6 @@
 # K-Deploy Action
 
-@TanmoySG/k-deploy-action is a GitHub Action that can be used to build CI/CD pipeline to deploy an app to any Kubernetes Ennviroment.
+`k-deploy-action` is a GitHub Action that can be used to build CI/CD pipeline to deploy an app to any Kubernetes Ennviroment.
 
 ## Usage
 
