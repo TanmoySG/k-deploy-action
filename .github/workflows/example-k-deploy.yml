@@ -1,6 +1,9 @@
 name: K-Deploy Action Example
 
-on: [push]
+on:
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
   aks-deploy:
