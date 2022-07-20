@@ -13,5 +13,5 @@ jobs:
       - name: K-Deploy Action
         uses: ./
         with:
-          kubeconfig: aks.kubeconfig
+          kubeconfig: .kubeconfig
           resources: example/deployment.yml

@@ -5,6 +5,10 @@ inputs:
   kubeconfig:
     description: 'Path to Kubeconfig'
     required: true
+  namespace:
+    description: 'Kubernetes Namespace'
+    required: true
+    default: 'default'
   resources:
     description: 'Path to resources Files'
     required: true

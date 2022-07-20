@@ -1,26 +1,33 @@
 import core from '@actions/core';
-import { K8sClient, KubeConfig, stringify } from '@thinkdeep/k8s';
+import k8s from '@kubernetes/client-node';
 import * as fs from 'fs';
 
 async function run() {
-  try {
-    const kubeconfigPath = core.getInput('kubeconfig');
-    const kubeResourcesPath = core.getInput('resources');
+	try {
+		const kubeconfigPath = core.getInput('kubeconfig');
+		const kubeResourcesPath = core.getInput('resources');
+		const kubeNamespace = core.getInput('namespace');
 
-    const kubeconfig = new KubeConfig();
-    kubeconfig.loadFromFile(kubeconfigPath)
+		const kc = new k8s.KubeConfig();
+		kc.loadFromFile(kubeconfigPath);
 
-    const client = await new K8sClient(kubeconfig).init();
+		const k8sApi = kc.makeApiClient(k8s.AppsV1Api);
+		const kubeResourcesYAML = fs.readFileSync(kubeResourcesPath, 'utf8');
 
-    const kubeResourcesYAML = fs.readFileSync(kubeResourcesPath, 'utf8');
-    const deploymentResponse = await client.apply(kubeResourcesYAML);
+		const kubeDeploymentResources = k8s.loadYaml(kubeResourcesYAML)
 
-    const deploymentResponseString = stringify(deploymentResponse);
-    console.log(deploymentResponseString);
-
-  } catch (error) {
-    core.setFailed(error.message);
-  }
+		k8sApi.createNamespacedDeployment(kubeNamespace, kubeDeploymentResources).then(
+			(response) => {
+				core.info('Yay! \nYou spawned: ' + kubeDeploymentResources.metadata.name);
+			},
+			(err) => {
+				core.info('Oh no. Something went wrong :(');
+				core.setFailed(err);
+			}
+		);
+	} catch (error) {
+		core.setFailed(error.message);
+	}
 }
 
 run();
