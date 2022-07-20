@@ -8,8 +8,7 @@ setup-dry-run-env:
 	@kind get kubeconfig > .kubeconfig
 
 
-act-dry-run:
-	setup-dry-run-env
+act-dry-run: setup-dry-run-env
 	@ncc build index.js --license licenses.txt
 	@cp example/example-k-deploy.yml .github/workflows/example-k-deploy.yml
 	@act workflow_dispatch
