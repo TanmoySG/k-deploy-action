@@ -18,7 +18,7 @@ async function run() {
 
 		k8sApi.createNamespacedDeployment(kubeNamespace, kubeDeploymentResources).then(
 			(response) => {
-				core.info('Yay! \nYou spawned: ' + amazingDeployment.metadata.name);
+				core.info('Yay! \nYou spawned: ' + kubeDeploymentResources.metadata.name);
 			},
 			(err) => {
 				core.info('Oh no. Something went wrong :(');
