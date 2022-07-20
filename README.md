@@ -11,6 +11,7 @@ The action can be used as
   uses: TanmoySG/k-deploy-action@v0.1-alpha
   with:
     kubeconfig: path/to/kubeconfig
+    namespace: 'default'
     resources: path/to/resources/file
 ```
 
@@ -23,6 +24,7 @@ The Action can be configures using inputs
 | Input Name | Required | Description |
 | ---------- | -------- | ----------- |
 | kubeconfig | Yes      | Path to Kubeconfig for the Kubernetes cluster. Default Context is used. |
+| namespace  | Yes.     | Namespace to make the deployment in. Default: 'default' |
 | resources  | Yes      | Resources File required for Deploying the Application with all configurations. [Ref.](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/) |
 
 Currently this action supports all resources defined in a [single YML file](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/). Multiple Resources File support will be added soon.
@@ -45,6 +47,7 @@ To tackle this, one may use one of the following ways to secure the things.
   uses: TanmoySG/k-deploy-action@v0.1-alpha
   with:
     kubeconfig: path/to/deploy.kubeconfig
+    namespace: 'default'
     resources: path/to/resources/file
 
 - name: Clean-Up
@@ -65,6 +68,7 @@ To tackle this, one may use one of the following ways to secure the things.
   uses: TanmoySG/k-deploy-action@v0.1-alpha
   with:
     kubeconfig: path/to/deploy.kubeconfig
+    namespace: 'default'
     resources: path/to/resources/file
 
 - name: Clean-Up
