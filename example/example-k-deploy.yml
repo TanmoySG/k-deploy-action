@@ -10,9 +10,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - uses: azure/setup-kubectl@v2.0
+
       - name: K-Deploy Action
         uses: ./
         with:
           kubeconfig: .kubeconfig
-          namespace: 'default'
-          resources: example/deployment.yml
+          resources: example/deploy/base/deployment.yml
+          kustomize: false
+          overlay: 'example/deploy/overlays/non-prod'

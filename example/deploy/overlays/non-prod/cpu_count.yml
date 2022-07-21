@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logsmith
+spec:
+  template:
+    spec:
+      containers:
+      - name: logsmith
+        resources:
+          limits:
+            memory: 512Mi

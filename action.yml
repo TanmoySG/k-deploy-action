@@ -9,9 +9,16 @@ inputs:
     description: 'Kubernetes Namespace'
     required: true
     default: 'default'
-  resources:
-    description: 'Path to resources Files'
+  manifest:
+    description: 'Path to manifest Files'
+    required: false
+  kustomize:
+    description: 'Boolean. If Kustomization is required'
     required: true
+    default: false
+  overlay:
+    description: 'Path to overlay for kustomization'
+    required: false
 runs:
   using: 'node16'
   main: 'dist/index.js'
