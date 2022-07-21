@@ -12,6 +12,13 @@ inputs:
   resources:
     description: 'Path to resources Files'
     required: true
+  kustomize:
+    description: 'Boolean. If Kustomization is required'
+    required: true
+    default: false
+  overlay:
+    description: 'Path to overlay for kustomization'
+    required: false
 runs:
   using: 'node16'
   main: 'dist/index.js'
