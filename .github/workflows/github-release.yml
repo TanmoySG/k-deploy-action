@@ -16,7 +16,7 @@ jobs:
 
       - name: Build
         run: |
-          npm install @vercel/ncc
+          npm i -g @vercel/ncc
           ncc build index.js --license licenses.txt
 
       - name: Release
