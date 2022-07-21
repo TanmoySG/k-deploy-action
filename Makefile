@@ -8,22 +8,14 @@ setup-dry-run-env:
 	@kind get kubeconfig > .kubeconfig
 
 dry-run: setup-dry-run-env
-	@ncc build app.js --license licenses.txt
-	@cp example/example-k-deploy.yml .github/workflows/example-k-deploy.yml
-	@act workflow_dispatch
-	@rm .github/workflows/example-k-deploy.yml
-
-
-act-dry-run: setup-dry-run-env
 	@ncc build index.js --license licenses.txt
 	@cp example/example-k-deploy.yml .github/workflows/example-k-deploy.yml
 	@act workflow_dispatch
-	@rm .github/workflows/example-k-deploy.yml
 
 build:
 	@ncc build index.js --license licenses.txt
 
-teardown-dry-run-env:
+clean-up:
 	@kind delete cluster
 	@rm -rf .kubeconfig
 	@rm .github/workflows/example-k-deploy.yml
