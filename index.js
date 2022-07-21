@@ -1,31 +1,24 @@
 import core from '@actions/core';
-import k8s from '@kubernetes/client-node';
-import * as fs from 'fs';
+import kubectl from './src/kubectl.js';
 
 async function run() {
 	try {
 		const kubeconfigPath = core.getInput('kubeconfig');
-		const kubeResourcesPath = core.getInput('resources');
 		const kubeNamespace = core.getInput('namespace');
+		const kubeKustomization = core.getBooleanInput('kustomize');
 
-		const kc = new k8s.KubeConfig();
-		kc.loadFromFile(kubeconfigPath);
+		const ctl = new kubectl(kubeconfigPath, kubeNamespace);
 
-		const k8sApi = kc.makeApiClient(k8s.AppsV1Api);
-		const kubeResourcesYAML = fs.readFileSync(kubeResourcesPath, 'utf8');
+		if (kubeKustomization == false) {
+			const kubeManifestPath = core.getInput('resources');
+			ctl.apply(kubeManifestPath)
+		} else {
+			const kustomizeOverlay = core.getInput('overlay');
+			ctl.kustomize(kustomizeOverlay);
+		}
 
-		const kubeDeploymentResources = k8s.loadYaml(kubeResourcesYAML)
-
-		k8sApi.createNamespacedDeployment(kubeNamespace, kubeDeploymentResources).then(
-			(response) => {
-				core.info('Yay! \nYou spawned: ' + kubeDeploymentResources.metadata.name);
-			},
-			(err) => {
-				core.info('Oh no. Something went wrong :(');
-				core.setFailed(err);
-			}
-		);
 	} catch (error) {
+		console.log(error)
 		core.setFailed(error.message);
 	}
 }
