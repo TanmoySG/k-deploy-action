@@ -1,22 +1,21 @@
 import { exec } from '@actions/exec'
-import kustomize from './kustomize.js';
 
+export default class kubectl {
 
-export default class kubectl extends kustomize {
-
-    constructor(kubeconfig) {
-        super()
+    constructor(kubeconfig, namespace) {
         this.kubeconfig = kubeconfig
+        this.namespace = namespace
     }
 
     apply(manifest) {
-        exec('kubectl', ['apply', '-f', manifest, '--kubeconfig', this.kubeconfig]).then(
-            (exitcode) => {}
+        exec('kubectl', ['apply', '-f', manifest, '-n', this.namespace, '--kubeconfig', this.kubeconfig]).then(
+            (exitcode) => { }
         )
     }
 
-    kustomize(overlay, outputfile){
-        const k = new kustomize()
-        return k.build(overlay, outputfile)
+    kustomize(overlay) {
+        exec('kubectl', ['apply', '-k', overlay, '-n', this.namespace, '--kubeconfig', this.kubeconfig]).then(
+            (exitcode) => { }
+        )
     }
 }
