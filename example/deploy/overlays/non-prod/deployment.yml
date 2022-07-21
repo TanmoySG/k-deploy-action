@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logsmith
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: logsmith
+  template:
+    metadata:
+      labels:
+        run: logsmith
+    spec:
+      containers:
+      - name: logsmith
+        image: "ghcr.io/tanmoysg/logsmith-monitor:v0.1.0"
+        ports:
+        - containerPort: 8080

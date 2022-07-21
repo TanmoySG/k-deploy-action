@@ -1,0 +1,4 @@
+resources:
+- deployment.yml
+patchesStrategicMerge:
+- cpu_count.yml
