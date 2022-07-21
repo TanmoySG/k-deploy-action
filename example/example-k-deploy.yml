@@ -16,6 +16,6 @@ jobs:
         uses: ./
         with:
           kubeconfig: .kubeconfig
-          resources: example/deploy/base/deployment.yml
+          manifest: example/deploy/base/deployment.yml
           kustomize: false
           overlay: 'example/deploy/overlays/non-prod'

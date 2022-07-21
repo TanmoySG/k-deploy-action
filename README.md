@@ -8,7 +8,7 @@ The action can be used as
 
 ```yaml
 - name: Kubernetes Deployment
-  uses: TanmoySG/k-deploy-action@v0.2.0-alpha
+  uses: TanmoySG/k-deploy-action@v0.2.2-alpha
   with:
     kubeconfig: path/to/kubeconfig
     namespace: 'default'
@@ -19,7 +19,7 @@ Using Kustomization
 
 ```yaml
 - name: Kubernetes Deployment
-  uses: TanmoySG/k-deploy-action@v0.2.0-alpha
+  uses: TanmoySG/k-deploy-action@v0.2.2-alpha
   with:
     kubeconfig: path/to/kubeconfig
     namespace: 'default'
@@ -56,7 +56,7 @@ To tackle this, one may use one of the following ways to secure the things.
     echo ${{ secrets.CERTS }} > path/to/cert
 
 - name: Kubernetes Deployment
-  uses: TanmoySG/k-deploy-action@v0.2.0-alpha
+  uses: TanmoySG/k-deploy-action@v0.2.2-alpha
   with:
     kubeconfig: path/to/deploy.kubeconfig
     namespace: 'default'
@@ -77,7 +77,7 @@ To tackle this, one may use one of the following ways to secure the things.
     ./decrypt certs.encrypted -k ${{ secret.DECRYPTION_KEY}} > path/to/cert
 
 - name: Kubernetes Deployment
-  uses: TanmoySG/k-deploy-action@v0.2.0-alpha
+  uses: TanmoySG/k-deploy-action@v0.2.2-alpha
   with:
     kubeconfig: path/to/deploy.kubeconfig
     namespace: 'default'
