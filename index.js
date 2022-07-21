@@ -10,7 +10,7 @@ async function run() {
 		const ctl = new kubectl(kubeconfigPath, kubeNamespace);
 
 		if (kubeKustomization == false) {
-			const kubeManifestPath = core.getInput('resources');
+			const kubeManifestPath = core.getInput('manifest');
 			ctl.apply(kubeManifestPath)
 		} else {
 			const kustomizeOverlay = core.getInput('overlay');
