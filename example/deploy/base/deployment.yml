@@ -2,10 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: logsmith
-  labels:
-    app: logsmith
-    role: leader
-    tier: backend
 spec:
   replicas: 1
   selector:
@@ -15,8 +11,7 @@ spec:
     metadata:
       labels:
         app: logsmith
-        role: leader
-        tier: backend
+      name: logsmith
     spec:
       containers:
       - name: logsmith
